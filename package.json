@@ -1,8 +1,10 @@
 {
-  "name": "typescript-action",
+  "name": "lighthouse-report",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Audit URLs using Lighthouse and test performance with Lighthouse CI",
+  "author": "nordcloud",
+  "license": "MIT",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,19 +17,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/nordcloud/lighthouse-report.git"
   },
-  "keywords": [
-    "actions",
-    "node",
-    "setup"
-  ],
-  "author": "",
-  "license": "MIT",
+  "engines": {
+    "node": ">=12"
+  },
   "dependencies": {
-    "@actions/core": "^1.4.0"
+    "@actions/artifact": "^0.5.2",
+    "@actions/core": "^1.4.0",
+    "@actions/github": "^5.0.0",
+    "@lhci/cli": "^0.8.1",
+    "@lhci/utils": "^0.8.1",
+    "is-windows": "^1.0.2",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@types/is-windows": "^1.0.0",
+    "@types/lodash": "^4.14.173",
     "@types/node": "^16.3.3",
     "@typescript-eslint/parser": "^4.28.3",
     "@vercel/ncc": "^0.29.0",

@@ -1,11 +1,50 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Lighthouse CI Action'
+description: 'Audit URLs using Lighthouse and test performance with Lighthouse CI'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  urls:
+    description: 'List of URL(s) to analyze'
+    required: false
+  budgetPath:
+    description: 'Path to a Lighthouse budgets.json file'
+    required: false
+  configPath:
+    description: 'Path to a LHCI lighthouserc.json file'
+    required: false
+  uploadArtifacts:
+    description: 'Opt-out of saving Lighthouse results as an action artifacts'
+    required: false
+  artifactName:
+    description: 'Name of the artifact group if using uploadArtifacts. default: lighthouse-results'
+    required: false
+    default: lighthouse-results
+  temporaryPublicStorage:
+    description: 'Opt-in to saving Lighthouse results to temporary public storage'
+    required: false
+  runs:
+    description: 'Number of runs to do per URL'
+    required: false
+  serverBaseUrl:
+    description: 'Address of a LHCI server'
+    required: false
+  serverToken:
+    description: 'API token to push to LHCI server'
+    required: false
+  basicAuthUsername:
+    description: 'Basic auth username for LHCI server'
+    required: false
+  basicAuthPassword:
+    description: 'Basic auth password for LHCI server'
+    required: false
+outputs:
+  resultsPath:
+    description: 'Path to the folder with LHCI results'
+  links:
+    description: 'Links to compare/result UI for each URL (content of links.json)'
+  assertionResults:
+    description: 'Assertion results (content of assertion-results.json)'
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'bar-chart-2'
+  color: 'gray-dark'
