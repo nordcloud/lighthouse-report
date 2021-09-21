@@ -7,6 +7,7 @@ import { getInput, hasAssertConfig } from "./config";
 import { uploadArtifacts } from "./utils/artifacts";
 import { setAnnotations } from "./utils/annotations";
 import { setOutput } from "./utils/output"; // add automatic support for LH Plugins env
+import { login } from "./auth/login";
 
 const lhciCliPath = require.resolve("@lhci/cli/src/cli");
 
@@ -23,6 +24,19 @@ async function main() {
   const input = getInput();
   core.info(`Input args: ${JSON.stringify(input, null, "  ")}`);
   core.endGroup(); // Action config
+
+  /******************************* 0. AUTH **************************************/
+  try {
+    await login({
+      otpSecret: input.auth0OtpSecret,
+      credentials: { email: input.auth0Login, password: input.auth0Password },
+      loginUrl: "",
+    });
+  } catch (err) {
+    if (err instanceof Error) {
+      core.setFailed(err.message);
+    }
+  }
 
   /******************************* 1. COLLECT ***********************************/
   core.startGroup(`Collecting`);

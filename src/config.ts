@@ -4,6 +4,15 @@ import { get } from "lodash";
 import { resolve } from "path";
 
 export function getInput() {
+  const auth0Login = core.getInput("auth0Login");
+  const auth0Password = core.getInput("auth0Password");
+  const auth0OtpSecret = core.getInput("auth0OtpSecret");
+
+  if (isEmpty(auth0Login) || isEmpty(auth0Password) || isEmpty(auth0OtpSecret)) {
+    core.setFailed(`Auth0 credentials are required.`);
+    process.exit(1);
+  }
+
   // fallback to upload.serverBaseUrl + upload.token for previous API support
   const serverBaseUrl = core.getInput("serverBaseUrl") || core.getInput("upload.serverBaseUrl");
   const serverToken = core.getInput("serverToken") || core.getInput("upload.token");
@@ -64,6 +73,10 @@ export function getInput() {
   }
 
   return {
+    // auth
+    auth0Login,
+    auth0Password,
+    auth0OtpSecret,
     // collect
     urls,
     runs: core.getInput("runs") ? parseInt(core.getInput("runs"), 10) : numberOfRuns || 1, // `runs`, check config, and fallback to 1
@@ -127,4 +140,8 @@ function interpolateProcessIntoUrls(urls: string[]) {
 
     return url;
   });
+}
+
+export function isEmpty(item: unknown[] | string): boolean {
+  return item.length === 0;
 }
