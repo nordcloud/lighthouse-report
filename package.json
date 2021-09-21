@@ -13,7 +13,7 @@
     "check:types": "tsc --noEmit",
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
   "repository": {
