@@ -3,7 +3,8 @@
 > Audit URLs using [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 > and test performance with [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci).
 
-Extended from [Lighthouse CI Action](https://github.com/treosh/lighthouse-ci-action)
+**Extended from [Lighthouse CI Action](https://github.com/treosh/lighthouse-ci-action)**
+
 This action integrates Lighthouse CI with Github Actions environment.
 Making it simple to see failed tests, upload results, run jobs in parallel, store secrets, and interpolate env variables.
 
