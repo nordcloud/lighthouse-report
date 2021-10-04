@@ -30,7 +30,7 @@ async function main() {
     await login({
       otpSecret: input.auth0OtpSecret,
       credentials: { email: input.auth0Login, password: input.auth0Password },
-      loginUrl: "",
+      loginUrl: input.urls[0],
     });
   } catch (err) {
     if (err instanceof Error) {
