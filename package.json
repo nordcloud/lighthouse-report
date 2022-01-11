@@ -38,7 +38,7 @@
     "@types/is-windows": "^1.0.0",
     "@types/lodash": "^4.14.173",
     "@types/node": "^16.3.3",
-    "@typescript-eslint/parser": "^4.28.3",
+    "@typescript-eslint/parser": "^5.9.1",
     "@vercel/ncc": "^0.29.0",
     "eslint": "^7.31.0",
     "eslint-plugin-github": "^4.1.1",
